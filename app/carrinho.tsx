@@ -7,14 +7,6 @@ export default function CarrinhoScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
 
-    //const filme = params.titulo ? {
-    // titulo: params.titulo as string,
-    // imagem: params.imagem as string,
-    // sala: params.sala as string || 'Sala 01',
-    // horario: params.horario as string || '19:00',
-    // preco: Number(params.preco) || 32.0,
-    //} : null;
-
     const MODO_SIMULACAO = false;
 
     const filme = (params.titulo || MODO_SIMULACAO) ? {
