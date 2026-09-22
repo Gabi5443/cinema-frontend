@@ -1,0 +1,1 @@
+import { getMovieById } from '@/data/movie';
