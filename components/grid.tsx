@@ -21,6 +21,8 @@ export default function MovieGrid({ movies }: MovieGridProps) {
   const router = useRouter();
   const { width } = useWindowDimensions();
 
+  
+
   // Espaçamento lateral da tela
   const horizontalPadding = 16;
 
@@ -110,11 +112,7 @@ export default function MovieGrid({ movies }: MovieGridProps) {
     />
   );
 }
-const { width } = useWindowDimensions();
-const horizontalPadding = 16;
-const gap = 12;
 
-const cardWidth = (width - horizontalPadding * 2 - gap) / 2;
 
 const styles = StyleSheet.create({
   list: {
