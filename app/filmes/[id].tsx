@@ -7,40 +7,33 @@ import {
   Text,
   View,
   Pressable,
-  useWindowDimensions,
+  Dimensions,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { getMovieById } from '../../data/movie';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function MovieDetails() {
-  const { id } = useLocalSearchParams();
+  // TODOS OS HOOKS FICAM AQUI, SEM NENHUM IF ANTES DELES
+  const params = useLocalSearchParams();
   const router = useRouter();
-  const { width } = useWindowDimensions();
 
-  const movie = getMovieById(id as string);
+  const id = params.id as string;
+  const movie = getMovieById(id);
 
-  if (!movie) {
-    return (
-      <View style={styles.notFound}>
-        <Text style={styles.notFoundText}>
-          Filme não encontrado.
-        </Text>
-      </View>
-    );
-  }
+  const screenWidth = Dimensions.get('window').width;
 
-  // Limita o tamanho da imagem no PC,
-  // mas deixa ela responsiva no celular.
-  const posterWidth = Math.min(width - 32, 500);
+  const posterWidth = Math.min(screenWidth - 32, 500);
   const posterHeight = posterWidth * 1.45;
 
   const adicionarAoCarrinho = () => {
+    if (!movie) return;
+
     router.push({
       pathname: '/carrinho',
       params: {
         titulo: movie.titulo,
-        imagem: movie.imagem,
+        imagem: String(movie.imagem),
         sala: 'Sala 01 • IMAX',
         horario: '19:00',
         preco: '32',
@@ -54,86 +47,106 @@ export default function MovieDetails() {
       contentContainerStyle={styles.content}
       showsVerticalScrollIndicator={false}
     >
-      {/* BOTÃO VOLTAR */}
-      <Pressable
-        style={styles.voltar}
-        onPress={() => router.back()}
-      >
-        <Ionicons
-          name="arrow-back"
-          size={22}
-          color="#FFF"
-        />
-        <Text style={styles.voltarText}>
-          Voltar
-        </Text>
-      </Pressable>
-
-      {/* IMAGEM */}
-      <Image
-        source={movie.imagem}
-        style={[
-          styles.poster,
-          {
-            width: posterWidth,
-            height: posterHeight,
-          },
-        ]}
-        resizeMode="cover"
-      />
-
-      {/* INFORMAÇÕES */}
-      <View style={styles.info}>
-        <Text style={styles.title}>
-          {movie.titulo}
-        </Text>
-
-        <Text style={styles.subtitle}>
-          {movie.subtitulo}
-        </Text>
-
-        <View style={styles.details}>
-          <Text style={styles.classificacao}>
-            {movie.classificacao}
+      {/* FILME NÃO ENCONTRADO */}
+      {!movie ? (
+        <View style={styles.notFound}>
+          <Text style={styles.notFoundText}>
+            Filme não encontrado.
           </Text>
 
-          <Text style={styles.duration}>
-            {movie.duracao}
-          </Text>
+          <Pressable
+            style={styles.voltarButton}
+            onPress={() => router.back()}
+          >
+            <Text style={styles.voltarButtonText}>
+              Voltar
+            </Text>
+          </Pressable>
         </View>
+      ) : (
+        <>
+          {/* VOLTAR */}
+          <Pressable
+            style={styles.voltar}
+            onPress={() => router.back()}
+          >
+            <Ionicons
+              name="arrow-back"
+              size={22}
+              color="#FFF"
+            />
 
-        <Text style={styles.categories}>
-          {movie.categorias}
-        </Text>
+            <Text style={styles.voltarText}>
+              Voltar
+            </Text>
+          </Pressable>
 
-        <Text style={styles.sectionTitle}>
-          Sinopse
-        </Text>
-
-        <Text style={styles.sinopse}>
-          {movie.sinopse}
-        </Text>
-
-        {/* BOTÃO DO INGRESSO */}
-        <Pressable
-          style={({ pressed, hovered }) => [
-            styles.btnCarrinho,
-            pressed && styles.btnPressed,
-            hovered && styles.btnHovered,
-          ]}
-          onPress={adicionarAoCarrinho}
-        >
-          <Ionicons
-            name="ticket-outline"
-            size={22}
-            color="#FFF"
+          {/* PÔSTER RESPONSIVO */}
+          <Image
+            source={movie.imagem}
+            style={[
+              styles.poster,
+              {
+                width: posterWidth,
+                height: posterHeight,
+              },
+            ]}
+            resizeMode="cover"
           />
 
-          <Text style={styles.btnCarrinhoText}>
-            Adicionar ingresso ao carrinho
-          </Text>
-        </Pressable>
-      </View>
+          {/* INFORMAÇÕES */}
+          <View style={styles.info}>
+            <Text style={styles.title}>
+              {movie.titulo}
+            </Text>
+
+            <Text style={styles.subtitle}>
+              {movie.subtitulo}
+            </Text>
+
+            <View style={styles.details}>
+              <Text style={styles.classificacao}>
+                {movie.classificacao}
+              </Text>
+
+              <Text style={styles.duration}>
+                {movie.duracao}
+              </Text>
+            </View>
+
+            <Text style={styles.categories}>
+              {movie.categorias}
+            </Text>
+
+            <Text style={styles.sectionTitle}>
+              Sinopse
+            </Text>
+
+            <Text style={styles.sinopse}>
+              {movie.sinopse}
+            </Text>
+
+            {/* ADICIONAR AO CARRINHO */}
+            <Pressable
+              style={({ pressed }) => [
+                styles.btnCarrinho,
+                pressed && styles.btnPressed,
+              ]}
+              onPress={adicionarAoCarrinho}
+            >
+              <Ionicons
+                name="ticket-outline"
+                size={22}
+                color="#FFF"
+              />
+
+              <Text style={styles.btnCarrinhoText}>
+                Adicionar ingresso ao carrinho
+              </Text>
+            </Pressable>
+          </View>
+        </>
+      )}
     </ScrollView>
   );
 }
@@ -245,10 +258,6 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.98 }],
   },
 
-  btnHovered: {
-    opacity: 0.9,
-  },
-
   btnCarrinhoText: {
     color: '#FFF',
     fontSize: 15,
@@ -256,14 +265,27 @@ const styles = StyleSheet.create({
   },
 
   notFound: {
-    flex: 1,
-    backgroundColor: '#0d0d0d',
-    justifyContent: 'center',
+    width: '100%',
     alignItems: 'center',
+    paddingTop: 100,
   },
 
   notFoundText: {
     color: '#FFF',
     fontSize: 18,
+    marginBottom: 20,
+  },
+
+  voltarButton: {
+    backgroundColor: '#770b10',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+
+  voltarButtonText: {
+    color: '#FFF',
+    fontWeight: 'bold',
   },
 });
+
