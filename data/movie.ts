@@ -20,7 +20,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Fantasia',
     sinopse:
       'Em uma Nova York onde ninguém mais sabe sua verdadeira identidade, Peter Parker enfrenta novos vilões enquanto descobre o real significado de recomeçar.',
-    imagem: require('../assets/images/homem-aranha.png'),
+    imagem: require('../assets/images/spider.jpg'),
   },
 
   {
@@ -32,7 +32,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Crime, Drama',
     sinopse:
       'Batman enfrenta uma ameaça que coloca Gotham em caos enquanto precisa lidar com um inimigo que desafia seus limites e sua determinação.',
-    imagem: require('../assets/images/batman.png'),
+    imagem: require('../assets/images/thedark.jpg'),
   },
 
   {
@@ -44,7 +44,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Ficção Científica',
     sinopse:
       'Um jovem com poderes extraordinários precisa descobrir seu lugar no mundo enquanto decide como usar suas habilidades para proteger as pessoas.',
-    imagem: require('../assets/images/superman.png'),
+    imagem: require('../assets/images/superman.jpg'),
   },
 
   {
@@ -56,7 +56,7 @@ export const moviesData: Movie[] = [
     categorias: 'Aventura, Ficção Científica',
     sinopse:
       'Uma nova ameaça coloca humanos e dinossauros em perigo quando uma ilha isolada se torna palco de uma corrida pela sobrevivência.',
-    imagem: require('../assets/images/jurassic-world.png'),
+    imagem: require('../assets/images/Jurassic.jpg'),
   },
 
   {
@@ -68,7 +68,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Fantasia',
     sinopse:
       'Uma família busca refúgio em uma nova região de Pandora e precisa aprender a viver em harmonia com um ambiente completamente diferente.',
-    imagem: require('../assets/images/avatar.png'),
+    imagem: require('../assets/images/avatar.jpg'),
   },
 
   {
@@ -80,7 +80,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ficção Científica, Drama',
     sinopse:
       'Quando a sobrevivência da humanidade está ameaçada, uma equipe parte em uma missão espacial em busca de um novo lugar para viver.',
-    imagem: require('../assets/images/interestelar.png'),
+    imagem: require('../assets/images/Interestelar.jpg'),
   },
 
   {
@@ -92,7 +92,7 @@ export const moviesData: Movie[] = [
     categorias: 'Crime, Drama, Suspense',
     sinopse:
       'Um homem solitário enfrenta uma série de acontecimentos que transforma completamente sua relação com a sociedade e consigo mesmo.',
-    imagem: require('../assets/images/coringa.png'),
+    imagem: require('../assets/images/JOKER.jpg'),
   },
 
   {
@@ -104,7 +104,7 @@ export const moviesData: Movie[] = [
     categorias: 'Animação, Aventura, Comédia',
     sinopse:
       'Um grupo de brinquedos embarca em uma nova aventura enquanto tenta proteger seu dono e permanecer unido diante das mudanças.',
-    imagem: require('../assets/images/toy-story.png'),
+    imagem: require('../assets/images/toystory.jpg'),
   },
 
   {
@@ -116,7 +116,7 @@ export const moviesData: Movie[] = [
     categorias: 'Animação, Aventura, Fantasia',
     sinopse:
       'Uma jovem embarca em uma viagem pelo oceano para descobrir a origem de seu povo e ajudar sua ilha a superar uma antiga ameaça.',
-    imagem: require('../assets/images/moana.png'),
+    imagem: require('../assets/images/moana.jpg'),
   },
 
   {
@@ -128,7 +128,7 @@ export const moviesData: Movie[] = [
     categorias: 'Animação, Fantasia, Musical',
     sinopse:
       'Duas irmãs precisam enfrentar seus medos e reconstruir sua relação quando poderes mágicos transformam o reino em um lugar congelado.',
-    imagem: require('../assets/images/frozen.png'),
+    imagem: require('../assets/images/Frozen.jpg'),
   },
 
   {
@@ -140,7 +140,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Ficção Científica',
     sinopse:
       'Um grupo de heróis precisa deixar suas diferenças de lado para enfrentar uma ameaça capaz de colocar o mundo inteiro em perigo.',
-    imagem: require('../assets/images/vingadores.png'),
+    imagem: require('../assets/images/vingadores.jpg'),
   },
 
   {
@@ -152,7 +152,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Comédia',
     sinopse:
       'Um grupo de personagens completamente diferentes precisa trabalhar junto para impedir que uma poderosa ameaça destrua a galáxia.',
-    imagem: require('../assets/images/guardioes-galaxia.png'),
+    imagem: require('../assets/images/guardioes.jpg'),
   },
 
   {
@@ -164,7 +164,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Ficção Científica',
     sinopse:
       'Após assumir uma importante posição em seu reino, um jovem líder precisa proteger seu povo enquanto enfrenta desafios internos e externos.',
-    imagem: require('../assets/images/pantera-negra.png'),
+    imagem: require('../assets/images/pantera.jpg'),
   },
 
   {
@@ -176,7 +176,7 @@ export const moviesData: Movie[] = [
     categorias: 'Aventura, Comédia, Ficção Científica',
     sinopse:
       'Um adolescente viaja acidentalmente para o passado e precisa encontrar uma maneira de voltar para sua época sem alterar o futuro.',
-    imagem: require('../assets/images/de-volta-para-o-futuro.png'),
+    imagem: require('../assets/images/devolta.jpg'),
   },
 
   {
@@ -188,7 +188,7 @@ export const moviesData: Movie[] = [
     categorias: 'Aventura, Fantasia',
     sinopse:
       'Um jovem descobre que possui habilidades mágicas e começa seus estudos em uma escola cheia de mistérios, amizades e aventuras.',
-    imagem: require('../assets/images/harry-potter.png'),
+    imagem: require('../assets/images/harry.jpg'),
   },
 
   {
@@ -200,7 +200,7 @@ export const moviesData: Movie[] = [
     categorias: 'Aventura, Fantasia, Drama',
     sinopse:
       'Um jovem recebe a missão de proteger um objeto poderoso e parte em uma jornada ao lado de um grupo de companheiros.',
-    imagem: require('../assets/images/senhor-dos-aneis.png'),
+    imagem: require('../assets/images/senhordosaneis.jpg'),
   },
 
   {
@@ -212,7 +212,7 @@ export const moviesData: Movie[] = [
     categorias: 'Ação, Aventura, Fantasia',
     sinopse:
       'Um pirata excêntrico se envolve em uma aventura perigosa para recuperar seu navio e enfrentar uma tripulação marcada por uma antiga maldição.',
-    imagem: require('../assets/images/piratas-caribe.png'),
+    imagem: require('../assets/images/piratas.jpg'),
   },
 
   {
@@ -224,7 +224,7 @@ export const moviesData: Movie[] = [
     categorias: 'Aventura, Comédia, Fantasia',
     sinopse:
       'Quatro adolescentes ficam presos dentro de um jogo e precisam completar uma missão para conseguir voltar para casa.',
-    imagem: require('../assets/images/jumanji.png'),
+    imagem: require('../assets/images/jumanji.jpg'),
   },
 
   {
@@ -236,7 +236,7 @@ export const moviesData: Movie[] = [
     categorias: 'Animação, Aventura, Fantasia',
     sinopse:
       'Um jovem viking faz amizade com um dragão e começa a questionar tudo o que aprendeu sobre essas criaturas.',
-    imagem: require('../assets/images/como-treinar-seu-dragao.png'),
+    imagem: require('../assets/images/dragoes.jpg'),
   },
 
   {
@@ -248,15 +248,10 @@ export const moviesData: Movie[] = [
     categorias: 'Animação, Aventura, Drama',
     sinopse:
       'Um jovem leão precisa superar grandes desafios e descobrir seu verdadeiro papel para assumir seu lugar no ciclo da vida.',
-    imagem: require('../assets/images/rei-leao.png'),
+    imagem: require('../assets/images/rei.jpg'),
   },
 ];
 
-export const getMovieById = (
-  id: string | number
-): Movie | undefined => {
-  return moviesData.find(
-    (movie) => String(movie.id) === String(id)
-  );
-};
-```
+
+ 
+export const getMovieById = ( id: string | number ): Movie | undefined => { return moviesData.find( (movie) => String(movie.id) === String(id) ); };

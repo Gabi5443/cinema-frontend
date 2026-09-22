@@ -1,3 +1,4 @@
+
 import { View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
@@ -5,6 +6,8 @@ import { useState } from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import CinemandoTitle from '../components/cinemandoTitle';
 import Carrossel from '../components/carrossel';
+import MovieGrid from '../components/grid';
+import { moviesData } from '../data/movie';
 
 export default function IndexScreen() {
     const router = useRouter();
@@ -66,6 +69,9 @@ export default function IndexScreen() {
                 <Carrossel />
             </View>
 
+            {/* GRID DE FILMES */}
+            <MovieGrid movies={moviesData} />
+
         </ScrollView>
     );
 }
@@ -101,6 +107,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         backgroundColor: '#770b10',
     },
+
     dropdown: {
         position: 'absolute',
         top: 50,
@@ -116,13 +123,15 @@ const styles = StyleSheet.create({
         elevation: 10,
         zIndex: 102,
     },
+
     dropdownBtn: {
         paddingVertical: 12,
         paddingHorizontal: 16,
     },
+
     btnText: {
         fontSize: 16,
         color: '#fff',
-        
     },
 });
+
