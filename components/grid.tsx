@@ -5,7 +5,6 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  useWindowDimensions,
   Platform,
 } from 'react-native';
 import { useRouter } from 'expo-router';
@@ -17,20 +16,6 @@ interface MovieGridProps {
 
 export default function MovieGrid({ movies }: MovieGridProps) {
   const router = useRouter();
-  const { width } = useWindowDimensions();
-
-  // 1. Limita a largura máxima do grid no PC (ex: no máximo 1000px)
-  const maxGridWidth = Math.min(width, 1000);
-
-  // 2. Define o número de colunas: 4 no PC, 3 em Tablets, 2 no Celular
-  const numColumns = width > 900 ? 4 : width > 600 ? 3 : 2;
-
-  const horizontalPadding = 16;
-  const gap = 12;
-
-  // 3. Calcula a largura do card com base na largura máxima controlada
-  const cardWidth =
-    (maxGridWidth - horizontalPadding * 2 - gap * (numColumns - 1)) / numColumns;
 
   return (
     <View style={styles.container}>
@@ -41,22 +26,17 @@ export default function MovieGrid({ movies }: MovieGridProps) {
             onPress={() => router.push(`/filmes/${item.id}`)}
             style={({ pressed, hovered }) => [
               styles.card,
-              { width: cardWidth },
               pressed && styles.cardPressed,
               Platform.OS === 'web' && hovered && styles.cardHovered,
             ]}
           >
-            <Image
-              source={item.imagem}
-              style={[
-                styles.poster,
-                {
-                  width: '100%',
-                  height: cardWidth * 1.45, // Mantém a proporção do cartaz
-                },
-              ]}
-              resizeMode="cover"
-            />
+            <View style={styles.imageWrapper}>
+              <Image
+                source={item.imagem}
+                style={styles.poster}
+                resizeMode="cover"
+              />
+            </View>
 
             <View style={styles.info}>
               <Text style={styles.title} numberOfLines={1}>
@@ -82,17 +62,17 @@ export default function MovieGrid({ movies }: MovieGridProps) {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    alignItems: 'center', // Centraliza o grid em telas gigantes de PC
+    alignItems: 'center',
   },
 
   grid: {
     flexDirection: 'row',
-    flexWrap: 'wrap', // Permite que os cards vão para a próxima linha
-    gap: 12,
+    flexWrap: 'wrap',
+    gap: 16,
     paddingHorizontal: 16,
     paddingBottom: 30,
-    justifyContent: 'flex-start',
-    maxWidth: 1000, // Garante que o grid não estique além de 1000px no PC
+    justifyContent: 'center',
+    maxWidth: 1100,
     width: '100%',
   },
 
@@ -100,11 +80,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#171717',
     borderRadius: 12,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 3,
+    // Define larguras fixas por breakpoint CSS flexível
+    width: '100%',
+    maxWidth: 180, // Limita a largura máxima do card no PC
+    minWidth: 140, // Garante um tamanho mínimo no telemóvel
+    flexGrow: 1,
   },
 
   cardPressed: {
@@ -117,8 +97,15 @@ const styles = StyleSheet.create({
     transform: [{ scale: 1.02 }],
   },
 
-  poster: {
+  imageWrapper: {
+    width: '100%',
+    aspectRatio: 2 / 3, // Força a proporção do cartaz sem depender de cálculo JS
     backgroundColor: '#222',
+  },
+
+  poster: {
+    width: '100%',
+    height: '100%',
   },
 
   info: {
