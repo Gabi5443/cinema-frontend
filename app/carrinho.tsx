@@ -7,7 +7,7 @@ export default function CarrinhoScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
 
-    const MODO_SIMULACAO = true;
+    const MODO_SIMULACAO = false;
 
     const filme = (params.titulo || MODO_SIMULACAO) ? {
         titulo: (params.titulo as string) || 'Batman (Simulação)',
